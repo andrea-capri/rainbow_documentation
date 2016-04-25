@@ -5,4 +5,3 @@ gem 'rspec'
 gem 'rubocop'
 gem 'rake'
 gem 'colorize'
-# gem "rails"

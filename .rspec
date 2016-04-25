@@ -1,3 +1,2 @@
 --color
---require ./rainbow_formatter.rb
---format RainbowFormatter
+--format RainbowWrapper

@@ -2,7 +2,7 @@ require 'rspec'
 require 'rspec/core/formatters/base_text_formatter'
 require 'colorize'
 
-class RainbowFormatter < RSpec::Core::Formatters::BaseTextFormatter
+class RainbowWrapper < RSpec::Core::Formatters::BaseTextFormatter
   RSpec::Core::Formatters.register self,
                                    :example_group_started,
                                    :example_group_finished,
