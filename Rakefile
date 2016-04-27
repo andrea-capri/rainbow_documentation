@@ -2,7 +2,7 @@ require 'rubocop/rake_task'
 require 'rspec/core/rake_task'
 
 RSpec::Core::RakeTask.new(:example) do |t|
-    t.pattern = 'spec/unit'
+  t.pattern = 'spec/unit'
 end
 
 desc 'Run Rubocop on the compatible files'

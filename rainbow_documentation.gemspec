@@ -1,10 +1,10 @@
 $LOAD_PATH.unshift(File.dirname(__FILE__) + '/lib')
-require 'rainbow_wrapper/version'
+require 'rainbow_documentation/version'
 
 Gem::Specification.new do |s|
-  s.name        = 'rainbow_wrapper'
-  s.version     = RainbowWrapper::VERSION
-  s.date        = RainbowWrapper::RELEASE_DATE
+  s.name        = 'rainbow_documentation'
+  s.version     = RainbowDocumentation::VERSION
+  s.date        = RainbowDocumentation::RELEASE_DATE
 
   s.summary     = 'A wrapper for RSpec that keeps things colourful'
   s.description = %(
