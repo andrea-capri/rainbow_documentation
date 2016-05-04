@@ -16,8 +16,14 @@ class RainbowDocumentation < RSpec::Core::Formatters::BaseTextFormatter
     96, #:light_cyan
     35, #:magenta
     95, #:light_magenta
-    37 #:light_white]
+    37  #:light_white]
   ].freeze
+
+  TEST_COLOR = {
+    fail:    31, # red
+    success: 32, # green
+    pending: 33, # yellow
+  }.freeze
 
   def initialize(output)
     super
@@ -26,7 +32,7 @@ class RainbowDocumentation < RSpec::Core::Formatters::BaseTextFormatter
   end
 
   def example_group_started(notification)
-    @output.puts wrap("#{current_indentation}#{notification.group.description.strip}", @group_level)
+    @output.puts wrap("#{current_indentation}#{notification.group.description.strip}", COLOR[@group_level])
     @group_level += 1
   end
 
@@ -49,19 +55,15 @@ class RainbowDocumentation < RSpec::Core::Formatters::BaseTextFormatter
   private
 
   def passed_output(example)
-    RSpec::Core::Formatters::ConsoleCodes.wrap("#{current_indentation} -> #{example.description.strip}",
-                                               :success)
+    wrap("#{current_indentation}#{example.description.strip}", TEST_COLOR[:success])
   end
 
   def pending_output(example, message)
-    RSpec::Core::Formatters::ConsoleCodes.wrap("#{current_indentation} -> #{example.description.strip} (PENDING: #{message})",
-                                               :pending)
+    wrap("#{current_indentation}#{example.description.strip} (PENDING: #{message})", TEST_COLOR[:pending])
   end
 
   def failure_output(example, _exception)
-    RSpec::Core::Formatters::ConsoleCodes.wrap("#{current_indentation} -> #{example.description.strip} " \
-                                               "(FAILED - #{next_failure_index})",
-                                               :failure)
+    wrap("#{current_indentation}#{example.description.strip} (FAILED - #{next_failure_index})", TEST_COLOR[:fail])
   end
 
   def next_failure_index
@@ -70,12 +72,12 @@ class RainbowDocumentation < RSpec::Core::Formatters::BaseTextFormatter
   end
 
   def current_indentation
-    ' ' * @group_level
+    (' ' * 2) * @group_level
   end
 
   def wrap(text, code)
     if RSpec.configuration.color_enabled?
-      "\e[#{COLOR[code]}m#{text}\e[0m"
+      "\e[#{code}m#{text}\e[0m"
     else
       text
     end
