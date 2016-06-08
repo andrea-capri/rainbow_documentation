@@ -10,12 +10,12 @@ class RainbowDocumentation < RSpec::Core::Formatters::BaseTextFormatter
                                    :example_failed
 
   COLOR = [
+    35, #:magenta
+    95, #:light_magenta
     34, #:blue,
     94, #:light_blue,
     36, #:cyan
     96, #:light_cyan
-    35, #:magenta
-    95, #:light_magenta
     37  #:light_white]
   ].freeze
 
