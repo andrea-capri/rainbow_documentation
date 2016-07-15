@@ -1,6 +1,7 @@
 require 'rspec'
 require 'rspec/core/formatters/base_text_formatter'
 
+# A reinterpretation of the documentation formatter with more character
 class RainbowDocumentation < RSpec::Core::Formatters::BaseTextFormatter
   RSpec::Core::Formatters.register self,
                                    :example_group_started,
@@ -32,7 +33,7 @@ class RainbowDocumentation < RSpec::Core::Formatters::BaseTextFormatter
   end
 
   def example_group_started(notification)
-    @output.puts wrap("#{current_indentation}#{notification.group.description.strip}", COLOR[@group_level])
+    @output.puts wrap("#{current_indentation}#{notification.group.description.strip}", COLOR[@group_level % 6])
     @group_level += 1
   end
 

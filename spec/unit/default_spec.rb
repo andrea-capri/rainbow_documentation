@@ -21,6 +21,23 @@ describe 'RainbowWrapper First level' do
                 it 'fails here' do
                   raise 'did something wrong'
                 end
+                context '9 levels' do
+                  context '10 levels' do
+                    context '11 levels' do
+                      context '12 levels' do
+                        context '13 levels' do
+                          context '14 levels' do
+                            context '15 levels' do
+                              it 'cycles through colours' do
+                                puts 'at high levels'
+                              end
+                            end
+                          end
+                        end
+                      end
+                    end
+                  end
+                end
               end
             end
           end
