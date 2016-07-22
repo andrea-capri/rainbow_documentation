@@ -1,4 +1,4 @@
 class RainbowDocumentation
-  VERSION = '0.0.4'.freeze
+  VERSION = `git describe --tags`.freeze
   RELEASE_DATE = '2016-06-14'.freeze
 end
