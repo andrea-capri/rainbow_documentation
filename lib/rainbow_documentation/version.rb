@@ -1,4 +1,11 @@
+def current_git_tag
+  current_tag = `git describe --tags --exact-match`
+
+  current_tag.empty? ? nil : current_tag
+end
+
+# Automates versioning for gem releases
 class RainbowDocumentation
-  VERSION = `git describe --tags`.freeze
-  RELEASE_DATE = '2016-06-14'.freeze
+  VERSION = current_git_tag
+  RELEASE_DATE = `date +"%Y-%m-%d"`.freeze
 end

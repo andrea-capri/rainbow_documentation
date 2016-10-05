@@ -3,7 +3,7 @@ require 'rainbow_documentation/version'
 
 Gem::Specification.new do |s|
   s.name        = 'rainbow_documentation'
-  s.version     = RainbowDocumentation::VERSION
+  s.version     = RainbowDocumentation::VERSION || raise('Commit has not been tagged for release')
   s.date        = RainbowDocumentation::RELEASE_DATE
 
   s.summary     = 'A wrapper for RSpec that keeps things colourful'
