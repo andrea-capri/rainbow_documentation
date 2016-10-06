@@ -44,6 +44,9 @@ describe 'RainbowWrapper First level' do
           raise 'did something wrong'
         end
       end
+      context 'pending tests' do
+        pending 'not yet implemented'
+      end
     end
   end
 end
