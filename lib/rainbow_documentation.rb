@@ -10,6 +10,10 @@ class RainbowDocumentation < RSpec::Core::Formatters::BaseTextFormatter
                                    :example_pending,
                                    :example_failed
 
+  RSpec.configure do |config|
+    config.add_setting :indentation_character, default: '  '
+  end
+
   COLOR = [
     35, #:magenta
     95, #:light_magenta
@@ -73,7 +77,7 @@ class RainbowDocumentation < RSpec::Core::Formatters::BaseTextFormatter
   end
 
   def current_indentation
-    (' ' * 2) * @group_level
+    RSpec.configuration.indentation_character * @group_level
   end
 
   def wrap(text, code)
